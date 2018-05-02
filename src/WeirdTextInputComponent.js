@@ -8,17 +8,16 @@ class WeirdTextInputComponent extends Component {
             string: "",
             nrOfSteps: 1
         }
-        this.keyPressed = this.keyPressed.bind(this);
-        this.buttonPressed = this.buttonPressed.bind(this);
     }
 
-    buttonPressed(event) {
-        if (!isNaN(document.getElementById("nrOfStepsInput").value)) {
+    buttonPressed = event => {
+        event.preventDefault();
+        if (!isNaN(event.target.children[0].value)) {
             this.setState({ nrOfSteps: Number(document.getElementById("nrOfStepsInput").value) });
         }
     }
 
-    keyPressed(event) {
+    keyPressed = event => {
         if (event.keyCode === 8) {
             this.setState({ string: this.state.string.substring(0, this.state.string.length - 1) });
         }
@@ -27,10 +26,10 @@ class WeirdTextInputComponent extends Component {
         }
         else {
             if (event.keyCode >= 65 && event.keyCode <= 90) {
-                let theNr = this.state.nrOfSteps + event.keyCode;
-                if (theNr > 90) {
-                    theNr = theNr % 90;
-                    this.setState({ string: this.state.string += String.fromCharCode(theNr + 64) });
+                let inputNr = this.state.nrOfSteps + event.keyCode;
+                if (inputNr > 90) {
+                    let charNr = inputNr % 90;
+                    this.setState({ string: this.state.string += String.fromCharCode(charNr + 64) });
                 }
                 else {
                     let newChar = String.fromCharCode(event.keyCode + this.state.nrOfSteps);
@@ -47,10 +46,10 @@ class WeirdTextInputComponent extends Component {
                     Nr of steps: {this.state.nrOfSteps}
                 </div>
                 <textarea className="weirdTextArea" onKeyDown={this.keyPressed} value={this.state.string} />
-                <div>
+                <form onSubmit={this.buttonPressed}>
                     <input id="nrOfStepsInput" text="text" placeholder="" />
-                    <button onClick={this.buttonPressed}>Enter</button>
-                </div>
+                    <button>Enter</button>
+                </form>
             </div>
         );
     }

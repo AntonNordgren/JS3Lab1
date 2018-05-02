@@ -9,10 +9,9 @@ class LoginComponent extends Component {
             text: "You are logged out.",
             buttonText: "Login"
         }
-        this.logInButtonEvent = this.logInButtonEvent.bind(this);
     }
 
-    logInButtonEvent () {
+    logInButtonEvent = event => {
         if(!this.state.loggedIn) {
             this.setState({
                 loggedIn: true,

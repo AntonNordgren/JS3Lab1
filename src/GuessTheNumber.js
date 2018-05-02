@@ -10,13 +10,11 @@ class GuessTheNumber extends Component {
             text: "You have not entered a number yet.",
             numberOfTries: 1
         }
-        this.makeGuess = this.makeGuess.bind(this);
-        this.handleInput = this.handleInput.bind(this);
-        this.reset = this.reset.bind(this);
     }
 
-    makeGuess() {
-        let nr = document.getElementsByClassName('guessInput')[0].value;
+    makeGuess = event => {
+        event.preventDefault();
+        let nr = event.target.children[0].value;
 
         if(isNaN(nr) || Number(nr) < 1 || Number(nr) > 100) {
             this.setState({text: "Invalid Input."});
@@ -35,27 +33,14 @@ class GuessTheNumber extends Component {
         this.setState({currentInput: ""});
     }
 
-    handleInput(event) {
-        /*
-        if(event.key === "Backspace") {
-            console.log("Backspace clicked");
-            this.setState({currentInput: this.state.currentInput.substring(0, this.state.currentInput.length - 1)});
-        }
-        else {
-            this.setState({currentInput: this.state.currentInput += event.key});
-        }
-        console.log("CurrentInput: " + this.state.currentInput);
-        */
-    }
-
-    reset(event) {
+    reset = event => {
         this.setState({
             randomNumber: Math.ceil(Math.random() * 100),
             currentInput: "",
             text: "You have not entered a number yet.",
             numberOfTries: 1
         });
-        document.getElementsByClassName('guessInput')[0].value = "";
+        console.log(event.target);
     }
 
     render() {
@@ -64,9 +49,11 @@ class GuessTheNumber extends Component {
                 <div className="guessInstructions">
                     Guess a number from 1-100.
                 </div>
-                <input onKeyDown={this.handleInput} className="guessInput" type="text" placeholder="Enter a number (1-100)" />
-                <button onClick={this.makeGuess} className="guessButton" >Guess</button>
-                <button onClick={this.reset} className="guessButton" >Reset</button>
+                <form onSubmit={this.makeGuess}>
+                    <input className="guessInput" type="text" placeholder="Enter a number (1-100)" />
+                    <button className="guessButton" >Guess</button>
+                </form>
+                    <button className="resetButton" onClick={this.reset} >Reset</button>
                 <div className="guessTheNumberResult">
                     {this.state.text}
                     {this.state.currentInput}

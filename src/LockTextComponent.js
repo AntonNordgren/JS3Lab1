@@ -7,16 +7,9 @@ class LockTextComponent extends Component {
         this.state = {
             editable: true
         }
-        this.handleTextChange = this.handleTextChange.bind(this);
-        this.handleCheckbox = this.handleCheckbox.bind(this);
     }
 
-    handleTextChange(event) {
-        if(this.state.editable) {
-        }
-    }
-
-    handleCheckbox(event) {
+    handleCheckbox = event => {
         if(this.state.editable) {
             this.setState({editable: false});
         }

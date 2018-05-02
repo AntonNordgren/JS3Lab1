@@ -8,25 +8,21 @@ class TabComponent extends Component {
         this.state = {
             current: "One"
         }
-        this.updateTestVariableOne = this.updateTestVariableOne.bind(this);
-        this.updateTestVariableTwo = this.updateTestVariableTwo.bind(this);
-        this.updateTestVariableThree = this.updateTestVariableThree.bind(this);
-        this.updateTestVariableFour = this.updateTestVariableFour.bind(this);
     }
 
-    updateTestVariableOne() {
+    updateTestVariableOne = event => {
         this.setState({ current: "One" });
     }
 
-    updateTestVariableTwo() {
+    updateTestVariableTwo = event => {
         this.setState({ current: "Two" });
     }
 
-    updateTestVariableThree() {
+    updateTestVariableThree = event => {
         this.setState({ current: "Three" });
     }
 
-    updateTestVariableFour() {
+    updateTestVariableFour = event => {
         this.setState({ current: "Four" });
     }
 
