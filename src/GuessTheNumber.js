@@ -8,7 +8,8 @@ class GuessTheNumber extends Component {
             randomNumber: Math.ceil(Math.random() * 100),
             currentInput: "",
             text: "You have not entered a number yet.",
-            numberOfTries: 1
+            numberOfTries: 1,
+            finishedGame: false
         }
     }
 
@@ -21,13 +22,13 @@ class GuessTheNumber extends Component {
         }
         else {
             if(nr == this.state.randomNumber) {
-                this.setState({text: "Right!, number of tries: " + this.state.numberOfTries});
+                this.setState({text: (nr + " is right!, number of tries: ") + this.state.numberOfTries, finishedGame: true});
             }
             else if(nr < this.state.randomNumber) {
-                this.setState({text: "Too Small.", numberOfTries: this.state.numberOfTries + 1});
+                this.setState({text: (nr + " is too small."), numberOfTries: this.state.numberOfTries + 1});
             }
             else if(nr > this.state.randomNumber) {
-                this.setState({text: "Too Big.", numberOfTries: this.state.numberOfTries + 1});
+                this.setState({text: (nr + " is too big."), numberOfTries: this.state.numberOfTries + 1});
             }
         }
         this.setState({currentInput: ""});
@@ -38,26 +39,45 @@ class GuessTheNumber extends Component {
             randomNumber: Math.ceil(Math.random() * 100),
             currentInput: "",
             text: "You have not entered a number yet.",
-            numberOfTries: 1
+            numberOfTries: 1,
+            finishedGame: false
         });
-        console.log(event.target);
     }
 
     render() {
+
+        let comp;
+        if(!this.state.finishedGame) {
+            comp =  <div>
+                        <div className="guessInstructions">
+                            Guess a number from 1-100.
+                        </div>
+                        <form onSubmit={this.makeGuess}>
+                            <input className="guessInput" type="text" placeholder="Enter a number (1-100)" />
+                            <button className="guessButton" >Guess</button>
+                        </form>
+                        <button className="resetButton" onClick={this.reset} >Reset</button>
+                        <div className="guessTheNumberResult">
+                            {this.state.text}
+                            {this.state.currentInput}
+                        </div>
+                    </div>
+        }
+        else {
+            comp =  <div>
+                        <div>
+                            <button className="resetButton" onClick={this.reset} >Reset</button>
+                        </div>
+                        <div className="guessTheNumberResult">
+                            {this.state.text}
+                            {this.state.currentInput}
+                        </div>
+                    </div>
+        }
+
         return (
             <div className="GuessTheNumber">
-                <div className="guessInstructions">
-                    Guess a number from 1-100.
-                </div>
-                <form onSubmit={this.makeGuess}>
-                    <input className="guessInput" type="text" placeholder="Enter a number (1-100)" />
-                    <button className="guessButton" >Guess</button>
-                </form>
-                    <button className="resetButton" onClick={this.reset} >Reset</button>
-                <div className="guessTheNumberResult">
-                    {this.state.text}
-                    {this.state.currentInput}
-                </div>
+                {comp}
             </div>
         );
     }

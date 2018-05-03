@@ -12,8 +12,8 @@ class WeirdTextInputComponent extends Component {
 
     buttonPressed = event => {
         event.preventDefault();
-        if (!isNaN(event.target.children[0].value)) {
-            this.setState({ nrOfSteps: Number(document.getElementById("nrOfStepsInput").value) });
+        if (!isNaN(event.target.children[0].value) && Number(event.target.children[0].value) >=0 && Number(event.target.children[0].value) <=25 ) {
+            this.setState({ nrOfSteps: Number(event.target.children[0].value) });
         }
     }
 
@@ -25,16 +25,12 @@ class WeirdTextInputComponent extends Component {
             this.setState({ string: this.state.string += " " });
         }
         else {
-            if (event.keyCode >= 65 && event.keyCode <= 90) {
-                let inputNr = this.state.nrOfSteps + event.keyCode;
-                if (inputNr > 90) {
-                    let charNr = inputNr % 90;
-                    this.setState({ string: this.state.string += String.fromCharCode(charNr + 64) });
-                }
-                else {
-                    let newChar = String.fromCharCode(event.keyCode + this.state.nrOfSteps);
-                    this.setState({ string: this.state.string += newChar });
-                }
+            if (event.keyCode > 64 && event.keyCode < 91) {
+               let inputNr = this.state.nrOfSteps + event.keyCode;
+               if(inputNr > 90) {
+                   inputNr = inputNr % 90 + 64;
+               }
+               this.setState({ string: this.state.string += String.fromCharCode(inputNr) });
             }
         }
     }
@@ -47,7 +43,7 @@ class WeirdTextInputComponent extends Component {
                 </div>
                 <textarea className="weirdTextArea" onKeyDown={this.keyPressed} value={this.state.string} />
                 <form onSubmit={this.buttonPressed}>
-                    <input id="nrOfStepsInput" text="text" placeholder="" />
+                    <input id="nrOfStepsInput" text="text" placeholder="0-25" />
                     <button>Enter</button>
                 </form>
             </div>
