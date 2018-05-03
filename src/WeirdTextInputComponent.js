@@ -5,8 +5,8 @@ class WeirdTextInputComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            string: "",
-            nrOfSteps: 1
+            string: this.props.string,
+            nrOfSteps: this.props.steps
         }
     }
 

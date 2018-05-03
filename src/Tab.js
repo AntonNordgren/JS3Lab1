@@ -10,28 +10,28 @@ function TabSelection(props) {
     if(props.current === "One" || props.current === "") {
         return(
             <div className="FirstDiv">
-                <LoginComponent />
+                <LoginComponent loggedIn={false} text={"You are logged out."} buttonText={"Login"} />
             </div>
         );
     }
     else if(props.current === "Two") {
         return(
             <div className="SecondDiv">
-                <LockTextComponent />
+                <LockTextComponent editable={true} />
             </div>
         );
     }
     else if(props.current === "Three") {
         return(
             <div className="ThirdDiv">
-                <WeirdTextInputComponent />
+                <WeirdTextInputComponent string={""} steps={1} />
             </div>
         );
     }
     else if(props.current === "Four") {
         return(
             <div className="FourthDiv">
-                <GuessTheNumber />
+                <GuessTheNumber randomNumber={Math.ceil(Math.random() * 100)} currentInput={""} text={"You have not entered a number yet."} numberOfTries={1} finishedGame={false} />
             </div>
         );
     }

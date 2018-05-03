@@ -5,11 +5,11 @@ class GuessTheNumber extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            randomNumber: Math.ceil(Math.random() * 100),
-            currentInput: "",
-            text: "You have not entered a number yet.",
-            numberOfTries: 1,
-            finishedGame: false
+            randomNumber: this.props.randomNumber,
+            currentInput: this.props.currentInput,
+            text: this.props.text,
+            numberOfTries: this.props.numberOfTries,
+            finishedGame: this.props.finishedGame
         }
     }
 
