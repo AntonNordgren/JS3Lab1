@@ -5,8 +5,8 @@ class WeirdTextInputComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            string: this.props.string,
-            nrOfSteps: this.props.steps
+            string: "",
+            nrOfSteps: 1
         }
     }
 
@@ -38,7 +38,7 @@ class WeirdTextInputComponent extends Component {
     render() {
         return (
             <div className="WeirdTextInputComponent">
-                <div>
+                <div id='nrOfSteps'>
                     Nr of steps: {this.state.nrOfSteps}
                 </div>
                 <textarea className="weirdTextArea" onKeyDown={this.keyPressed} value={this.state.string} />

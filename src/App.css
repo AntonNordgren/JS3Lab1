@@ -3,10 +3,14 @@
   padding: 0;
   margin: 0;
   outline: none;
+  color: white;
+}
+button, input {
+  color: black;
 }
 
 body {
-  background-color: bisque;
+  background-color: #F4EAD5;
 }
 
 .TabComponent {
@@ -18,7 +22,7 @@ body {
 }
 
 .FirstDiv, .SecondDiv, .ThirdDiv, .FourthDiv {
-  background-color: red;
+  background-color: #E94E77;
   color: black;
   text-align: center;
   height: 450px;
@@ -30,8 +34,8 @@ body {
   height: 50px;
   font-size: 1.3em;
   color: white;
-  background-color: red;
-  border: solid red 1px;
+  background-color: #E94E77;
+  border: solid #E94E77 1px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   margin-right: 5px;
@@ -66,6 +70,9 @@ body {
   height: 200px;
   margin: 10px;
   font-size: 2em;
+  border: none;
+  border-radius: 5px;
+  color: black;
 }
 
 .textCheckbox {
@@ -75,11 +82,34 @@ body {
   top: 135px;
 }
 
+#nrOfStepsInput {
+  height: 25px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+form > button {
+  height: 30px;
+  width: 75px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
 .weirdTextArea {
   width: 400px;
   height: 200px;
   margin: 10px;
   font-size: 2em;
+  border: none;
+  border-radius: 5px;
+  color: black;
+}
+
+#nrOfSteps {
+  padding-top: 10px;
 }
 
 .GuessTheNumber {
@@ -88,13 +118,17 @@ body {
 }
 
 .guessInput {
-  height: 25px;
+  height: 36px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  padding: 2px;
 }
 
-.guessButton {
+.guessButton, .resetButton {
   height: 40px;
   width: 75px;
-  margin-left: 10px;
+  margin-left: 15px;
   font-size: 1.2em;
   background-color: green;
   border: solid green 1px;
@@ -110,7 +144,7 @@ body {
 
 .guessTheNumberResult {
   position: relative;
-  top: 50px;
+  top: 90px;
   width: 400px;
   margin: auto;
   font-size: 2em;
@@ -119,13 +153,6 @@ body {
 
 .resetButton {
   position: absolute;
-  height: 40px;
-  width: 75px;
-  font-size: 1.2em;
-  right: 120px;
-  bottom: 72px;
-  background-color: green;
-  border: solid green 1px;
-  border-radius: 10px;
-  color: white;
+  top: 38px;
+  right: 90px;
 }

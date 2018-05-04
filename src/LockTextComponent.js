@@ -5,7 +5,7 @@ class LockTextComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            editable: this.props.editable
+            editable: true
         }
     }
 

@@ -5,9 +5,9 @@ class LoginComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loggedIn: this.props.loggedIn,
-            text: this.props.text,
-            buttonText: this.props.buttonText
+            loggedIn: false,
+            text: "You are logged out.",
+            buttonText: "Login"
         }
     }
 

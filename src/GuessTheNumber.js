@@ -5,11 +5,11 @@ class GuessTheNumber extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            randomNumber: this.props.randomNumber,
-            currentInput: this.props.currentInput,
-            text: this.props.text,
-            numberOfTries: this.props.numberOfTries,
-            finishedGame: this.props.finishedGame
+            randomNumber: Math.ceil(Math.random() * 100),
+            currentInput: "",
+            text: "You have not entered a number yet.",
+            numberOfTries: 1,
+            finishedGame: false
         }
     }
 
@@ -65,9 +65,8 @@ class GuessTheNumber extends Component {
         }
         else {
             comp =  <div>
-                        <div>
-                            <button className="resetButton" onClick={this.reset} >Reset</button>
-                        </div>
+                        <button className="resetButton" onClick={this.reset} >Reset</button>
+                    
                         <div className="guessTheNumberResult">
                             {this.state.text}
                             {this.state.currentInput}
